@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:SS="clr-namespace:SS"
+             x:Class="SpreadsheetGUI.MainPage"
+             BackgroundColor="SlateGrey">
+    
+    <ContentPage.MenuBarItems >
+        <MenuBarItem Text="File" >
+            <MenuFlyoutItem Text="New" Clicked="NewClicked" />
+            <MenuFlyoutItem Text="Open" Clicked="OpenClicked" />
+            <MenuFlyoutItem Text="Save" Clicked="SaveClicked" />
+            <MenuFlyoutItem Text="SaveAs" Clicked="SaveAsClicked" />
+        </MenuBarItem>
+        
+        <MenuBarItem Text="Help">
+            <MenuFlyoutItem Text="Cell Input" Clicked="CellInput" />
+            <MenuFlyoutItem Text="File Saves" Clicked="FileSaves" />
+            <MenuFlyoutItem Text="AutoSave" Clicked="AutoSaveFeature" />
+            <MenuFlyoutItem Text="Sorting" Clicked="Sorting" />
+        </MenuBarItem>
+        <MenuBarItem Text="Sort">
+            <MenuFlyoutItem Text="Sort Ascending" Clicked="InOrderSort" />
+            <MenuFlyoutItem Text="Sort Descending" Clicked="ReverseSort" />
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+    
+    <Grid RowDefinitions="40, *">
+        <HorizontalStackLayout BackgroundColor="SlateGray" Margin="4" Spacing="30">
+
+            <Label x:Name="cellNameDisplay"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"
+                   Text="Cell Name: " 
+                   FontAttributes="Bold"
+                   TextColor="Black" 
+                   BackgroundColor="White"
+                   Padding="20" 
+                   WidthRequest="110" />
+
+            <Label x:Name="cellValueDisplay"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Start"
+                   Text="Cell Value: " 
+                   FontAttributes="Bold"
+                   TextColor="Black" 
+                   Padding="20" 
+                   BackgroundColor="White"
+                   WidthRequest="300" />
+
+            <Entry x:Name="textBox"
+                   Grid.Row="0" 
+                   Placeholder="Enter cell contents here"
+                   MinimumWidthRequest = "175"
+                   BackgroundColor="White"
+                   TextColor="Black" 
+                   FontAttributes="Bold"
+                   VerticalTextAlignment="Center"
+                   WidthRequest="200"
+                   TextChanged = "TextBoxChanged" 
+                   Completed ="TextBoxReturned"/>
+
+            <VerticalStackLayout MinimumWidthRequest="100">
+                <Label Text="Auto Save"
+                       VerticalTextAlignment="Start" 
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"/>
+
+                <Label x:Name="autoSave" 
+                       Text="Not saved" 
+                       FontSize="10"
+                       VerticalTextAlignment="End" 
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"/>
+            </VerticalStackLayout>
+
+            <Switch x:Name="toggleAutoSave" 
+                    IsToggled="false"
+                    Toggled="ToggleAutoSave"
+                    ThumbColor="DarkSlateGray"
+                    OnColor="LightGray" />
+        </HorizontalStackLayout>
+        
+        <SS:SpreadsheetGrid x:Name="spreadsheetGrid" Grid.Row="1"/>
+    </Grid>
+</ContentPage>

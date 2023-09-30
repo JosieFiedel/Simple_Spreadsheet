@@ -1,0 +1,14 @@
+{
+  "cells": {
+    "B2": {
+      "stringForm": "=A1"
+    },
+    "A1": {
+      "stringForm": "=2+8"
+    },
+    "B1": {
+      "stringForm": "=A1/3"
+    }
+  },
+  "Version": "ps6"
+}
